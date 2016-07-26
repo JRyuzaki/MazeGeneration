@@ -1,7 +1,7 @@
 # MazeGeneration
 Small Application that can create different Mazes using the depth-first search.
  
-Examples: <br />
+ ##Examples: <br />
 `java MazeGeneration -t examples/templates/heart.png -f examples -fg #FF0000` <br />
 ![alt tag](https://github.com/JRyuzaki/MazeGeneration/blob/master/examples/33893044896258.png "Heart Maze")<br />
 `java MazeGeneration -t examples/templates/star.png -f examples -fg #FFDD22`<br />
