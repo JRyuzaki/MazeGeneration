@@ -67,8 +67,9 @@ public class Main {
             }
         }
 
+        saveFrames = commandLineArgs.saveAllFrames;
+
         if(commandLineArgs.outputDirectory != null){
-            saveFrames = true;
             outputDirectoryPath = commandLineArgs.outputDirectory;
         }
 

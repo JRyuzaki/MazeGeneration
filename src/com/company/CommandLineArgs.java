@@ -31,11 +31,14 @@ public class CommandLineArgs {
     @Option(name="-mc", aliases = {"--mark-current"}, usage = "Hex String that represents the color of the current cell")
     public String currentCellColor;
 
-    @Option(name = "-f", aliases = {"--save-frames"}, usage = "Path to directory where all frames will be stored")
+    @Option(name = "-f", aliases = {"--output"}, usage = "Path to directory where all frames will be stored")
     public String outputDirectory;
 
     @Option(name="-t", aliases = {"--template"}, usage = "Path to a template image", metaVar = "OUTPUT")
     public File templateFile;
+
+    @Option(name="-sf", aliases = {"--save-frames"}, usage = "Boolean Value for saving all frames", handler = BooleanOptionHandler.class)
+    public boolean saveAllFrames;
 
     @Option(name="-cs", aliases = {"--cell-size"}, usage = "Size of ")
     public int cellSize;
