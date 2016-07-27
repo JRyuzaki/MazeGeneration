@@ -49,11 +49,11 @@ public class MazeRenderer {
     }
 
     public BufferedImage renderMaze(Maze maze){
-        BufferedImage image = new BufferedImage(maze.getWidth() * wallSize, maze.getHeight() * wallSize, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(maze.getWidth() * wallSize + 1, maze.getHeight() * wallSize + 1, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D graphics2D = (Graphics2D)image.getGraphics();
         graphics2D.setColor(backgroundColor);
-        graphics2D.fillRect(0, 0, wallSize * maze.getWidth(), wallSize * maze.getHeight());
+        graphics2D.fillRect(0, 0, wallSize * maze.getWidth() + 1, wallSize * maze.getHeight() + 1);
 
         for(int y = 0; y < maze.getHeight(); ++y){
             for(int x = 0; x < maze.getWidth(); ++x){
