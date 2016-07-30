@@ -8,6 +8,9 @@ public class Maze {
     private int width;
     private int height;
 
+    private int lastCheckX;
+    private int lastCheckY;
+
     private MazeCell[][] maze;
 
     private Stack<Point> mazeCellStack;
@@ -17,6 +20,8 @@ public class Maze {
     public Maze(int width, int height){
         this.width = width;
         this.height = height;
+
+        this.lastCheckX = this.lastCheckY = 0;
 
         this.maze = new MazeCell[this.height][this.width];
 
@@ -36,7 +41,7 @@ public class Maze {
         MazeCell currentCell;
 
         while(true) {
-            if(this.mazeCellStack.isEmpty())
+            if(this.mazeCellStack.isEmpty() && !this.checkIfMazeHasOtherUnvisitedCells())
                 return;
 
             currentCoordinates = this.mazeCellStack.peek();
@@ -111,6 +116,20 @@ public class Maze {
             updating = false;
             this.visit(newCoordinates);
         }
+    }
+
+    private boolean checkIfMazeHasOtherUnvisitedCells() {
+        for(int y = this.lastCheckY; y < this.height; ++y){
+            for(int x = this.lastCheckX; x < this.width; ++x){
+                if(this.maze[y][x] != null && !this.maze[y][x].isVisited()){
+                    this.lastCheckX = x;
+                    this.lastCheckY = y;
+                    this.visit(new Point(x, y));
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean hasUnvisitedNeighbours(Point currentCoordinates) {

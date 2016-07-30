@@ -12,13 +12,14 @@ import java.io.IOException;
 
 public class Main {
     private static final int BLACK_COLOR_CODE = Color.BLACK.getRGB();
+    private static final int WHITE_COLOR_CODE = Color.WHITE.getRGB();
 
     public static void main(String[] args) {
         MazeRenderer mazeRenderer = new MazeRenderer();
         int maxCycle;
         int mazeWidth, mazeHeight;
         BufferedImage template = null;
-        boolean saveFrames = false;
+        boolean saveFrames;
         String outputDirectoryPath = "";
 
 
@@ -96,9 +97,15 @@ public class Main {
             if(mazeWidth != template.getWidth() || mazeHeight != template.getHeight())
                 maze = new Maze(template.getWidth(), template.getHeight());
 
+            int templateColorCode;
+            if(!commandLineArgs.invertTemplate)
+                templateColorCode = BLACK_COLOR_CODE;
+            else
+                templateColorCode = WHITE_COLOR_CODE;
+
             for(int y = 0; y < template.getHeight(); ++y){
                 for(int x = 0; x < template.getWidth(); ++x){
-                    if(template.getRGB(x, y) == BLACK_COLOR_CODE){
+                    if(template.getRGB(x, y) == templateColorCode){
                         maze.removeMazeCellFromArray(x, y);
                     }
                 }

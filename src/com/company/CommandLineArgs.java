@@ -36,6 +36,8 @@ public class CommandLineArgs {
 
     @Option(name="-t", aliases = {"--template"}, usage = "Path to a template image", metaVar = "OUTPUT")
     public File templateFile;
+    @Option(name="-i", aliases = {"--invert-template", "--invert"}, usage = "Boolean Value for inverting the template", handler = BooleanOptionHandler.class)
+    public boolean invertTemplate;
 
     @Option(name="-sf", aliases = {"--save-frames"}, usage = "Boolean Value for saving all frames", handler = BooleanOptionHandler.class)
     public boolean saveAllFrames;
