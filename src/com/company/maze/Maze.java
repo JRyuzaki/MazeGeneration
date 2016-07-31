@@ -8,7 +8,6 @@ public class Maze {
     private int width;
     private int height;
 
-    private int lastCheckX;
     private int lastCheckY;
 
     private MazeCell[][] maze;
@@ -21,7 +20,7 @@ public class Maze {
         this.width = width;
         this.height = height;
 
-        this.lastCheckX = this.lastCheckY = 0;
+        this.lastCheckY = 0;
 
         this.maze = new MazeCell[this.height][this.width];
 
@@ -119,10 +118,9 @@ public class Maze {
     }
 
     private boolean checkIfMazeHasOtherUnvisitedCells() {
-        for(int y = this.lastCheckY; y < this.height; ++y){
-            for(int x = this.lastCheckX; x < this.width; ++x){
+        for(int y = this.lastCheckY ; y < this.height; ++y){
+            for(int x = 0; x < this.width; ++x){
                 if(this.maze[y][x] != null && !this.maze[y][x].isVisited()){
-                    this.lastCheckX = x;
                     this.lastCheckY = y;
                     this.visit(new Point(x, y));
                     return true;
